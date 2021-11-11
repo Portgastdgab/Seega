@@ -30,10 +30,13 @@ int main() {
     int x,y;
     char fichaj2 = j2[0].ficha;
     char fichaj1 = j1[0].ficha;
-    for (int i = 0; true; ++i) {
+    for (int i = 0; finish(j1, j2); ++i) {
+
         if (i % 2 == 0) {
+            cout<<"J2 ";
             mover_fichas(tablero, j2, bloqueo, fichaj2);
         } else {
+            cout<<"J1 ";
             mover_fichas(tablero, j1, bloqueo, fichaj1);
         }
     }

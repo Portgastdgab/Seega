@@ -64,9 +64,96 @@ char **pieza::mover_ficha() {
         for (int j = 0; j < 5; ++j) {
             if (pos_x == i and pos_y == j) {
                 tablero[j][i] = ficha;
-            }
-            else if (pos_x == i and pos_y == j) {
-                tablero[j][i] = ficha;
+                if (j-1 == 0 and i-1 == 0){
+                    if (tablero[j+1][i] != ficha and tablero[j+2][i] == ficha){
+                        tablero[j+1][i] = ' ';
+                    }
+                    if (tablero[j][i+1] != ficha and tablero[j][i+2] == ficha){
+                        tablero[j][i+1] = ' ';
+                    }
+                }
+                else if (j-1 == 4 and i-1 == 4){
+                    if (tablero[j-1][i] != ficha and tablero[j-2][i] == ficha){
+                        tablero[j-1][i] = ' ';
+                    }
+                    if (tablero[j][i-1] != ficha and tablero[j][i-2] == ficha){
+                        tablero[j][i-1] = ' ';
+                    }
+                }
+                else if (j-1 == 0 and i-1 == 4){
+                    if (tablero[j+1][i] != ficha and tablero[j+2][i] == ficha){
+                        tablero[j+1][i] = ' ';
+                    }
+                    if (tablero[j][i-1] != ficha and tablero[j][i-2] == ficha){
+                        tablero[j][i-1] = ' ';
+                    }
+                }
+                else if (j-1 == 4 and i-1 == 0){
+                    if (tablero[j-1][i] != ficha and tablero[j-2][i] == ficha){
+                        tablero[j-1][i] = ' ';
+                    }
+                    if (tablero[j][i+1] != ficha and tablero[j][i+2] == ficha){
+                        tablero[j][i+1] = ' ';
+                    }
+                }
+                else if (j-1 == 0){
+                    if (tablero[j+1][i] != ficha and tablero[j+2][i] == ficha){
+                        tablero[j+1][i] = ' ';
+                    }
+                    if (tablero[j][i-1] != ficha and tablero[j][i-2] == ficha){
+                        tablero[j][i-1] = ' ';
+                    }
+                    if (tablero[j][i+1] != ficha and tablero[j][i+2] == ficha){
+                        tablero[j][i+1] = ' ';
+                    }
+                }
+                else if (j-1 == 4){
+                    if (tablero[j-1][i] != ficha and tablero[j-2][i] == ficha){
+                        tablero[j-1][i] = ' ';
+                    }
+                    if (tablero[j][i-1] != ficha and tablero[j][i-2] == ficha){
+                        tablero[j][i-1] = ' ';
+                    }
+                    if (tablero[j][i+1] != ficha and tablero[j][i+2] == ficha){
+                        tablero[j][i+1] = ' ';
+                    }
+                }
+                else if (i-1 == 0){
+                    if (tablero[j-1][i] != ficha and tablero[j-2][i] == ficha){
+                        tablero[j-1][i] = ' ';
+                    }
+                    if (tablero[j+1][i] != ficha and tablero[j+2][i] == ficha){
+                        tablero[j+1][i] = ' ';
+                    }
+                    if (tablero[j][i+1] != ficha and tablero[j][i+2] == ficha){
+                        tablero[j][i+1] = ' ';
+                    }
+                }
+                else if (j-1 == 4){
+                    if (tablero[j-1][i] != ficha and tablero[j-2][i] == ficha){
+                        tablero[j-1][i] = ' ';
+                    }
+                    if (tablero[j+1][i] != ficha and tablero[j+2][i] == ficha){
+                        tablero[j+1][i] = ' ';
+                    }
+                    if (tablero[j][i-1] != ficha and tablero[j][i-2] == ficha){
+                        tablero[j][i-1] = ' ';
+                    }
+                }
+                else{
+                    if (tablero[j-1][i] != ficha and tablero[j-2][i] == ficha){
+                        tablero[j-1][i] = ' ';
+                    }
+                    if (tablero[j+1][i] != ficha and tablero[j+2][i] == ficha){
+                        tablero[j+1][i] = ' ';
+                    }
+                    if (tablero[j][i-1] != ficha and tablero[j][i-2] == ficha){
+                        tablero[j][i-1] = ' ';
+                    }
+                    if (tablero[j][i+1] != ficha and tablero[j][i+2] == ficha){
+                        tablero[j][i+1] = ' ';
+                    }
+                }
             }
         }
     }
