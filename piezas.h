@@ -10,5 +10,6 @@ struct pieza {
     pieza();
     bool verificar_insercion(int, int);
     char **insertar_ficha();
+    char **mover_ficha();
 
 };

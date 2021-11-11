@@ -23,27 +23,18 @@ int main() {
     seleccionar_color(j1, j2);
 
     //Seleccionar posiciones de las fichas
-    int cont1 = 0;
-    int cont2 = 0;
-    bloqueo.tablero[2][2] = 'X';
-    j1[0].tablero[2][0] = j1[0].ficha;
-    j1[1].tablero[4][2] = j1[1].ficha;
-    j2[0].tablero[0][2] = j2[0].ficha;
-    j2[1].tablero[2][4] = j2[1].ficha;
-    tablero.dibujar_tablero(j1[0].tablero);
-    for (int i = 2; i < 12; ++i) {
+    posicionar_fichas(j1, j2, bloqueo, tablero);
+
+    //Movimiento de las fichas
+    bloqueo.tablero[2][2] = ' ';
+    int x,y;
+    char fichaj2 = j2[0].ficha;
+    char fichaj1 = j1[0].ficha;
+    for (int i = 0; true; ++i) {
         if (i % 2 == 0) {
-            for (int j = 0; j < 2; ++j) {
-                cout<<"J1 ";
-                tablero.dibujar_tablero(j1[cont1].insertar_ficha());
-                cont1++;
-            }
+            mover_fichas(tablero, j2, bloqueo, fichaj2);
         } else {
-            for (int j = 0; j < 2; ++j) {
-                cout<<"J2 ";
-                tablero.dibujar_tablero(j2[cont2].insertar_ficha());
-                cont2++;
-            }
+            mover_fichas(tablero, j1, bloqueo, fichaj1);
         }
     }
 }

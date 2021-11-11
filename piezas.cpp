@@ -43,3 +43,32 @@ char **pieza::insertar_ficha(){
     }
     return tablero;
 }
+
+char **pieza::mover_ficha() {
+    int x, y;
+    int tem_x = pos_x, temp_y = pos_y;
+    cout<<"Mover a..."<<endl;
+    while(true){
+        cout << "ingrese posicion x:" << endl;
+        cin >> x;
+        pos_x = x - 1;
+        cout << "ingrese posicion y:" << endl;
+        cin >> y;
+        pos_y = y - 1;
+        if (verificar_insercion(pos_x, pos_y)){
+            tablero[temp_y][tem_x] = ' ';
+            break;
+        }
+    }
+    for (int i = 0; i < 5; ++i) {
+        for (int j = 0; j < 5; ++j) {
+            if (pos_x == i and pos_y == j) {
+                tablero[j][i] = ficha;
+            }
+            else if (pos_x == i and pos_y == j) {
+                tablero[j][i] = ficha;
+            }
+        }
+    }
+    return tablero;
+}
