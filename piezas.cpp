@@ -65,6 +65,7 @@ char **pieza::mover_ficha() {
             if (pos_x == i and pos_y == j) {
                 tablero[j][i] = ficha;
                 if (j-1 == 0 and i-1 == 0){
+                    cout<<"entro 1"<<endl;
                     if (tablero[j+1][i] != ficha and tablero[j+2][i] == ficha){
                         tablero[j+1][i] = ' ';
                     }
@@ -73,6 +74,7 @@ char **pieza::mover_ficha() {
                     }
                 }
                 else if (j-1 == 4 and i-1 == 4){
+                    cout<<"entro 2"<<endl;
                     if (tablero[j-1][i] != ficha and tablero[j-2][i] == ficha){
                         tablero[j-1][i] = ' ';
                     }
@@ -81,6 +83,7 @@ char **pieza::mover_ficha() {
                     }
                 }
                 else if (j-1 == 0 and i-1 == 4){
+                    cout<<"entro 3"<<endl;
                     if (tablero[j+1][i] != ficha and tablero[j+2][i] == ficha){
                         tablero[j+1][i] = ' ';
                     }
@@ -89,6 +92,7 @@ char **pieza::mover_ficha() {
                     }
                 }
                 else if (j-1 == 4 and i-1 == 0){
+                    cout<<"entro 4"<<endl;
                     if (tablero[j-1][i] != ficha and tablero[j-2][i] == ficha){
                         tablero[j-1][i] = ' ';
                     }
@@ -97,6 +101,7 @@ char **pieza::mover_ficha() {
                     }
                 }
                 else if (j-1 == 0){
+                    cout<<"entro 5"<<endl;
                     if (tablero[j+1][i] != ficha and tablero[j+2][i] == ficha){
                         tablero[j+1][i] = ' ';
                     }
@@ -108,6 +113,7 @@ char **pieza::mover_ficha() {
                     }
                 }
                 else if (j-1 == 4){
+                    cout<<"entro 6"<<endl;
                     if (tablero[j-1][i] != ficha and tablero[j-2][i] == ficha){
                         tablero[j-1][i] = ' ';
                     }
@@ -119,6 +125,7 @@ char **pieza::mover_ficha() {
                     }
                 }
                 else if (i-1 == 0){
+                    cout<<"entro 7"<<endl;
                     if (tablero[j-1][i] != ficha and tablero[j-2][i] == ficha){
                         tablero[j-1][i] = ' ';
                     }
@@ -129,7 +136,8 @@ char **pieza::mover_ficha() {
                         tablero[j][i+1] = ' ';
                     }
                 }
-                else if (j-1 == 4){
+                else if (i-1 == 4){
+                    cout<<"entro 8"<<endl;
                     if (tablero[j-1][i] != ficha and tablero[j-2][i] == ficha){
                         tablero[j-1][i] = ' ';
                     }
@@ -141,6 +149,7 @@ char **pieza::mover_ficha() {
                     }
                 }
                 else{
+                    cout<<"entro 9"<<endl;
                     if (tablero[j-1][i] != ficha and tablero[j-2][i] == ficha){
                         tablero[j-1][i] = ' ';
                     }
