@@ -9,7 +9,9 @@ struct pieza {
 
     pieza();
     bool verificar_insercion(int, int);
+    bool diagonal(int, int, int, int);
     char **insertar_ficha();
+    char **custodiar_ficha();
     char **mover_ficha();
 
 };

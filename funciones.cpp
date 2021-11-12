@@ -17,6 +17,7 @@ void seleccionar_color(pieza j1[12], pieza j2[12]){
 void posicionar_fichas (pieza j1[12], pieza j2[12], pieza bloqueo, mesa tablero) {
     int cont1 = 2;
     int cont2 = 2;
+    //posicionar 2 primeras fichas de cada jugador de manera standar
     bloqueo.tablero[2][2] = 'X';
     j1[0].pos_x = 0;
     j1[0].pos_y = 2;
@@ -48,6 +49,59 @@ void posicionar_fichas (pieza j1[12], pieza j2[12], pieza bloqueo, mesa tablero)
     }
 }
 
+bool ficha_bloqueada(pieza bloqueo, int x, int y, char ficha){
+    bool value = true;
+    if (bloqueo.tablero[y-1][x-1] == ficha){
+        if (y-1 == 0 and x-1 == 0){
+            if (bloqueo.tablero[y][x-1] == ' ' or bloqueo.tablero[y-1][x] == ' '){
+                value = false;
+            }
+        }
+        else if (y-1 == 4 and x-1 == 4){
+            if (bloqueo.tablero[y-2][x-1] == ' ' or bloqueo.tablero[y-1][x-2] == ' '){
+                value = false;
+            }
+        }
+        else if (y-1 == 0 and x-1 == 4){
+            if (bloqueo.tablero[y][x-1] == ' ' or bloqueo.tablero[y-1][x-2] == ' '){
+
+                value = false;
+            }
+        }
+        else if (y-1 == 4 and x-1 == 0){
+            if (bloqueo.tablero[y-1][x] == ' ' or bloqueo.tablero[y-2][x-1] == ' '){
+                value = false;
+            }
+        }
+        else if (y-1 == 0){
+            if (bloqueo.tablero[y-1][x-2] == ' ' or bloqueo.tablero[y-1][x-2] == ' ' or bloqueo.tablero[y][x-1] == ' ' or bloqueo.tablero[y-1][x] == ' '){
+                value = false;
+            }
+        }
+        else if (y-1 == 4){
+            if (bloqueo.tablero[y-2][x-1] == ' ' or bloqueo.tablero[y-1][x-2] == ' ' or bloqueo.tablero[y-1][x-2] == ' ' or bloqueo.tablero[y-1][x] == ' '){
+                value = false;
+            }
+        }
+        else if (x-1 == 0){
+            if (bloqueo.tablero[y-2][x-1] == ' ' or bloqueo.tablero[y-1][x-2] == ' ' or bloqueo.tablero[y][x-1] == ' ' or bloqueo.tablero[y-1][x] == ' '){
+                value = false;
+            }
+        }
+        else if (x-1 == 4){
+            if (bloqueo.tablero[y-2][x-1] == ' ' or bloqueo.tablero[y-1][x-2] == ' ' or bloqueo.tablero[y-1][x-2] == ' ' or bloqueo.tablero[y][x-1] == ' '){
+                value = false;
+            }
+        }
+        else{
+            if (bloqueo.tablero[y-2][x-1] == ' ' or bloqueo.tablero[y-1][x-2] == ' ' or bloqueo.tablero[y-1][x-2] == ' ' or bloqueo.tablero[y][x-1] == ' ' or bloqueo.tablero[y-1][x] == ' '){
+                value = false;
+            }
+        }
+    }
+    return value;
+}
+
 void mover_fichas (mesa tablero, pieza jugador[12], pieza bloqueo, char ficha){
     int x, y;
     bool value = true;
@@ -58,53 +112,10 @@ void mover_fichas (mesa tablero, pieza jugador[12], pieza bloqueo, char ficha){
         cout<<"Posicion y:"<<endl;
         cin>>y;
         if (bloqueo.tablero[y-1][x-1] == ficha){
-            if (y-1 == 0 and x-1 == 0){
-                if (bloqueo.tablero[y][x-1] == ' ' or bloqueo.tablero[y-1][x] == ' '){
-                    value = false;
-                }
-            }
-            else if (y-1 == 4 and x-1 == 4){
-                if (bloqueo.tablero[y-2][x-1] == ' ' or bloqueo.tablero[y-1][x-2] == ' '){
-                    value = false;
-                }
-            }
-            else if (y-1 == 0 and x-1 == 4){
-                if (bloqueo.tablero[y][x-1] == ' ' or bloqueo.tablero[y-1][x-2] == ' '){
-
-                    value = false;
-                }
-            }
-            else if (y-1 == 4 and x-1 == 0){
-                if (bloqueo.tablero[y-1][x] == ' ' or bloqueo.tablero[y-2][x-1] == ' '){
-                    value = false;
-                }
-            }
-            else if (y-1 == 0){
-                if (bloqueo.tablero[y-1][x-2] == ' ' or bloqueo.tablero[y-1][x-2] == ' ' or bloqueo.tablero[y][x-1] == ' ' or bloqueo.tablero[y-1][x] == ' '){
-                    value = false;
-                }
-            }
-            else if (y-1 == 4){
-                if (bloqueo.tablero[y-2][x-1] == ' ' or bloqueo.tablero[y-1][x-2] == ' ' or bloqueo.tablero[y-1][x-2] == ' ' or bloqueo.tablero[y-1][x] == ' '){
-                    value = false;
-                }
-            }
-            else if (x-1 == 0){
-                if (bloqueo.tablero[y-2][x-1] == ' ' or bloqueo.tablero[y-1][x-2] == ' ' or bloqueo.tablero[y][x-1] == ' ' or bloqueo.tablero[y-1][x] == ' '){
-                    value = false;
-                }
-            }
-            else if (x-1 == 4){
-                if (bloqueo.tablero[y-2][x-1] == ' ' or bloqueo.tablero[y-1][x-2] == ' ' or bloqueo.tablero[y-1][x-2] == ' ' or bloqueo.tablero[y][x-1] == ' '){
-                    value = false;
-                }
-            }
-            else{
-                if (bloqueo.tablero[y-2][x-1] == ' ' or bloqueo.tablero[y-1][x-2] == ' ' or bloqueo.tablero[y-1][x-2] == ' ' or bloqueo.tablero[y][x-1] == ' ' or bloqueo.tablero[y-1][x] == ' '){
-                    value = false;
-                }
-            }
-        } else{
+            //Verificar si la ficha puede moverse
+            value = ficha_bloqueada(bloqueo, x, y, ficha);
+        }
+        if (value){
             cout<<"Ficha ingresada incorrecta. INTENTELO DE NUEVO!"<<endl;
         }
     }
@@ -116,26 +127,52 @@ void mover_fichas (mesa tablero, pieza jugador[12], pieza bloqueo, char ficha){
     }
 }
 
-bool finish(pieza j1[12], pieza j2[12]){
+
+bool finish(pieza j1[12], pieza j2[12]) {
     int contj1 = 0;
-    for (int i = 0; i < 12; ++i) {
-        if (j1[i].ficha != ' '){
-            contj1++;
-        }
-    }
+    //muros
+    int cont_blockj1;
     int contj2 = 0;
-    for (int i = 0; i < 12; ++i) {
-        if (j2[i].ficha != ' '){
-            contj2++;
+    int cont_blockj2;
+    for (int i = 0; i < 5; ++i) {
+        for (int j = 0; j < 5; ++j) {
+            if (j1[0].tablero[i][j] == j1[0].ficha) {
+                //contar cuantas fichas tiene bloqueado su movimiento
+                if (!ficha_bloqueada(j1[0], i+1, j+1, j1[0].ficha)){
+                    cont_blockj1++;
+                }
+                contj1++;
+            } else if (j1[0].tablero[i][j] == j2[0].ficha) {
+                //contar cuantas fichas tiene bloqueado su movimiento
+                if (!ficha_bloqueada(j2[0], i+1, j+1, j2[0].ficha)){
+                    cont_blockj2++;
+                }
+                contj2++;
+            }
         }
     }
-    if (contj1 == 0){
-        cout<<"GANA J2"<<endl;
-        return false;
+    // En caso de encierro se realiza conteo
+    if (cont_blockj1 == contj1){
+        cout<< "PIEZAS ENCERRADAS! Segun conteo...";
+        if (contj1 > contj2){
+            cout<<"Gana J1"<<endl;
+            return false;
+        }
+        else if (contj2 > contj1){
+            cout<<"Gana J2"<<endl;
+            return false;
+        }
+        else{
+            cout<<"EMPATE"<<endl;
+            return false;
+        }
     }
-    else if (contj2 == 0
-    ){
-        cout<<"GANA J2"<<endl;
+    //Si un jugador se queda sin fichas
+    if (contj1 == 0) {
+        cout << "GANA J2" << endl;
+        return false;
+    } else if (contj2 == 0) {
+        cout << "GANA J1" << endl;
         return false;
     }
     return true;

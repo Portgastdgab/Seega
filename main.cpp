@@ -1,7 +1,6 @@
 #include "funciones.h"
 
-
-int main() {
+void play(){
     mesa tablero;
 
     pieza bloqueo;
@@ -27,17 +26,26 @@ int main() {
 
     //Movimiento de las fichas
     bloqueo.tablero[2][2] = ' ';
-    int x,y;
     char fichaj2 = j2[0].ficha;
     char fichaj1 = j1[0].ficha;
-    for (int i = 0; finish(j1, j2); ++i) {
-
+    for (int i = 0; true; ++i) {
+        //El juego sigue hasta que finish sea false;
         if (i % 2 == 0) {
             cout<<"J2 ";
             mover_fichas(tablero, j2, bloqueo, fichaj2);
+            if (!finish(j1, j2)){
+                break;
+            }
         } else {
             cout<<"J1 ";
             mover_fichas(tablero, j1, bloqueo, fichaj1);
+            if (!finish(j1, j2)){
+                break;
+            }
         }
     }
+}
+
+int main() {
+    play();
 }
